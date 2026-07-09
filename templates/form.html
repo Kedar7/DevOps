@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Submit Data</title>
+  </head>
+  <body>
+    <h1>Submit Data</h1>
+    {% if error %}
+      <p style="color:red">Error: {{ error }}</p>
+    {% endif %}
+    <form method="post" action="/submit">
+      <label>Name: <input type="text" name="name" value="{{ name|default('') }}"></label><br>
+      <label>Email: <input type="email" name="email" value="{{ email|default('') }}"></label><br>
+      <label>Message:<br><textarea name="message">{{ message|default('') }}</textarea></label><br>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
