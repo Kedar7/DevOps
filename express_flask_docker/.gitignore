@@ -1,0 +1,14 @@
+# Node
+node_modules/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
+*.log
+
+# OS
+.DS_Store

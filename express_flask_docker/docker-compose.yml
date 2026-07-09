@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    container_name: express_flask_backend
+    ports:
+      - "5000:5000"
+    networks:
+      - ef_network
+  frontend:
+    build: ./frontend
+    container_name: express_flask_frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      - BACKEND_URL=http://backend:5000/submit
+    networks:
+      - ef_network
+
+networks:
+  ef_network:
+    driver: bridge
