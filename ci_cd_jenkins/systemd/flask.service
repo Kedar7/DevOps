@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask App (Dev)
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/DevOps/express_flask_docker/backend
+ExecStart=/usr/bin/env python3 app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

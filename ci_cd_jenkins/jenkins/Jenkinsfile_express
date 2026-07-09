@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+  environment {
+    REPO = 'https://github.com/Kedar7/DevOps.git'
+    REMOTE_USER = 'ubuntu' // change as needed
+    HOST = 'EC2_PUBLIC_IP' // set via Jenkins credentials or environment
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        git url: "${REPO}"
+      }
+    }
+    stage('Install') {
+      steps {
+        sh 'echo "Installing node modules if needed"'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${HOST} 'bash -s' < ci_cd_jenkins/scripts/deploy_express.sh"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Express Frontend (Dev)
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/DevOps/express_flask_docker/frontend
+ExecStart=/usr/bin/env pm2 start index.js --no-daemon --name express-frontend
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
